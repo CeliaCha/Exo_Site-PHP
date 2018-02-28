@@ -9,10 +9,7 @@
 <body>
 <?php
 session_start();
-
-//var_dump($_SESSION);
 ?>
-
 <nav class="navbar sticky-top navbar-light bg-light">
 <a class="nav-link" href="index.php?page=home.php">Accueil</a></li>
 <a class="nav-link" href="index.php?page=about.php">A propos</a>
@@ -29,8 +26,6 @@ session_start();
 </nav>
 <div class="container" id="mainpage">
 <div class="col-12">
-
-
 <?php
 if (isset($_GET['page'])) {
     include $_GET['page'];
@@ -38,9 +33,6 @@ if (isset($_GET['page'])) {
     include 'home.php';
 }
 ?>
-
-
-
 </div>
 </div>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
