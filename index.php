@@ -7,35 +7,40 @@
 <link rel="stylesheet" href="./CSS/main.css">
 </head>
 <body>
-<div class="container">
-<div class="col-12">
 <?php
-include 'menu.php';
+session_start();
+
+//var_dump($_SESSION);
+?>
+
+<nav class="navbar sticky-top navbar-light bg-light">
+<a class="nav-link" href="index.php?page=home.php">Accueil</a></li>
+<a class="nav-link" href="index.php?page=about.php">A propos</a>
+<a class="nav-link" href="index.php?page=events.php">Evenements</a>
+<a class="nav-link" href="index.php?page=blog.php">Blog</a>
+<a class="nav-link" href="index.php?page=contact.php">Contact</a>
+<a class="nav-link" href="index.php?page=login.php">Créer un compte</a>
+<?php if (isset($_SESSION['connected'])): ?>
+    <span>Bonjour <?php echo $_SESSION['connected'];?></span>
+    <a class="nav-link" href="index.php?page=connexion.php">Déconnexion</a>
+<?php else: ?>
+    <a class="nav-link" href="index.php?page=connexion.php">Connexion</a>
+<?php endif; ?>
+</nav>
+<div class="container" id="mainpage">
+<div class="col-12">
+
+
+<?php
 if (isset($_GET['page'])) {
-    switch ($_GET['page']) {
-        case "home":
-            include 'home.php';
-            break;
-        case "about":
-            include 'about.php';
-            break;
-        case "events":
-            include 'events.php';
-            break;
-        case "blog":
-            include 'blog.php';
-            break;
-        case "contact":
-            include 'contact.php';
-            break;
-        case "login":
-            include 'login.php';
-            break;
-        default:
-            include 'home.php';
-    }
+    include $_GET['page'];
+} else {
+    include 'home.php';
 }
 ?>
+
+
+
 </div>
 </div>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

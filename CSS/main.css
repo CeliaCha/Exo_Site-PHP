@@ -1,3 +1,9 @@
 .container {
     margin-top: 20px;
 }
+
+#mainpage {
+    /* display: flex; */
+    background-color: rgba(23, 136, 70, 0.603);
+
+}

@@ -36,7 +36,7 @@ if (!empty($_POST)) {
 
 
 <div id="formulaire">
-<form action="index.php?page=contact" method="post">
+<form action="index.php?page=contact.php" method="post">
     <p>
     <label for="objet">Objet :</label>
     <input type="text" name="objet" id="objet">
