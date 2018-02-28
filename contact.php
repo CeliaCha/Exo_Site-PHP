@@ -1,29 +1,24 @@
 <h1>Contact</h1>
 <?php
 if (!empty($_POST)) {
-//     if (is_numeric($_POST['age'])) {
-    //         echo "age valide";
-    //     }
-    //     else {
-    //         echo "age non valide";
-    //     }
-
-// $mystring = $_POST['message'];
-    // $findme   = 'Simplon';
-    // $pos = strpos($mystring, $findme);
-    // if ($pos !== false) {
-    //     echo "entrée invalide";
-    // }
-
-// foreach ($_POST as $key => $value) {
-    //     echo $key . " : " .$value . '</br>';
-    // }
 
     $objet = $_POST['objet'];
     $message = $_POST['message'];
     $thematique = $_POST['thematique'];
     $age = $_POST['age'];
     $compte = $_POST['compte'];
+
+    if (!is_numeric($age)) {
+        echo "<script>alert('Age invalide.');</script>";
+        return;
+    }
+
+    $findme = 'Simplon';
+    $pos = strpos($message, $findme);
+    if ($pos !== false) {
+        echo "entrée invalide";
+        return;
+    }
 
     $db = mysqli_connect('localhost', 'root', 'rajvena', 'PHP') or die('Erreur de connexion au serveur mySQL');
     $query = "INSERT INTO Contacts(_objet, _message, _thematique, _age, _compte) VALUES('$objet', '$message', '$thematique', '$age', '$compte')";
