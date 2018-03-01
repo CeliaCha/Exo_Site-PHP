@@ -9,14 +9,14 @@ if (isset($_SESSION['connected'])) :
   <h1>Connexion</h1>
   <div class="container formulaire">
     <form action="index.php?page=log_in.php" method="post">
-      <p>
+      <div class="form-group">
         <label for="login">Identifiant :</label>
-        <input type="text" name="login" id="login">
-      </p>
-      <p>
+        <input type="text" class="form-control" name="login" id="login">
+      </div>
+      <div class="form-group">
         <label for="password">Mot de passe :</label>
-        <input type="password" name="password" id="password">
-      </p>
+        <input type="password" class="form-control" name="password" id="password">
+      </div>
       <input type="submit" value="Se connecter">
     </form>
   </div>

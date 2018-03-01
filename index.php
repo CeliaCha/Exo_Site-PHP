@@ -19,7 +19,7 @@
     <a class="nav-link" href="index.php?page=sign_in.php">Créer un compte</a>
     <?php if (isset($_SESSION['connected'])): ?>
       <span>Bonjour <?php echo $_SESSION['connected'];?></span>
-      <a class="nav-link" href="index.php?page=event_interface.php">Admin</a>
+      <a class="nav-link" href="index.php?page=admin.php">Admin</a>
       <a class="nav-link" href="index.php?page=log_in.php">Déconnexion</a>
     <?php else: ?>
       <a class="nav-link" href="index.php?page=log_in.php">Connexion</a>
