@@ -14,7 +14,7 @@
     <a class="nav-link" href="index.php?page=home.php">Accueil</a></li>
     <a class="nav-link" href="index.php?page=about.php">A propos</a>
     <a class="nav-link" href="index.php?page=events.php">Evenements</a>
-    <a class="nav-link" href="index.php?page=blog.php">Blog</a>
+    <a class="nav-link" href="index.php?page=blog.php&pager=1">Blog</a>
     <a class="nav-link" href="index.php?page=contact.php">Contact</a>
     <a class="nav-link" href="index.php?page=sign_in.php">Créer un compte</a>
     <?php if (isset($_SESSION['connected'])): ?>
