@@ -4,11 +4,14 @@ function custom_request($req) {
   global $db;
   $resultQuery = mysqli_query($db, $req);
   if (!$resultQuery) {
-    echo "Error: " . $req . "<br>" . mysqli_error($db);
-    die;
-  } 
+    die("Error: " . $req . "<br>" . mysqli_error($db));
+  }
   return $resultQuery;
 }
+
+
+
+
 function display_pager($articles) {
   while ($data = mysqli_fetch_array($articles)) { ?>
     <div class='card  bg-light mb-3 border-secondary'>

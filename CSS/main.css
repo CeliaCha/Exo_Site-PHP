@@ -7,3 +7,7 @@
     background-color: rgba(23, 136, 70, 0.603);
 
 }
+
+.card-body {
+  margin-top: 10px;
+}

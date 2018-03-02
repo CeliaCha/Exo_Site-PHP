@@ -3,21 +3,21 @@
   include 'UTILS/database.php';
   if (!isset($_GET['id'])) { // display multiple articles
     // handle pager :
-    $total_articles = custom_request("SELECT * FROM Blog ORDER BY _date");
-    $pagercount = floor($total_articles->num_rows/3);
-    if ($total_articles->num_rows % 3 > 0) { $pagercount += 1; }
-    if ($_GET['pager'] < 1) { $_GET['pager'] = 1 ; }
-    if ($_GET['pager'] > $pagercount) { $_GET['pager'] = $pagercount ; }
+    $total_articles = custom_request("SELECT * FROM Blog ORDER BY _date ASC");
+    $pagercount = ceil($total_articles->num_rows/3);
+    $linkprevious = ''; $linknext = '';
+    if ($_GET['pager'] === '1') { $linkprevious = " disabled" ; }
+    else if ($_GET['pager'] === strval($pagercount)) { $linknext = " disabled" ; }
     // display paginated articles :
     ?>
     <ul class='pagination justify-content-end'>
       <li class='page-item'>
         <?php
-        echo "<a class='page-link' href='index.php?page=blog.php&pager=" . ($_GET['pager'] - 1) . "'>Previous</a></li>";
+        echo "<li class='page-item" . $linkprevious . "'><a class='page-link' href='index.php?page=blog.php&pager=" . ($_GET['pager'] - 1) . "'><<</a></li>";
         for ($i = 1; $i <= $pagercount; $i++) { // affiche le pager
           echo "<li class='page-item'><a class='page-link' href='index.php?page=blog.php&pager=" . $i . "'>" . $i . "</a></li>";
         }
-        echo "<li class='page-item'><a class='page-link' href='index.php?page=blog.php&pager=" . ($_GET['pager'] + 1) . "'>Next</a></li>";
+        echo "<li class='page-item" . $linknext . "'><a class='page-link' href='index.php?page=blog.php&pager=" . ($_GET['pager'] + 1) . "'>>></a></li>";
         echo "</ul>";
         $offset = ($_GET['pager'] - 1) * 3;
         display_pager(custom_request("SELECT * FROM Blog LIMIT $offset, 3"));
