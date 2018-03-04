@@ -46,3 +46,10 @@ else :
   header('Location: index.php?page=log_in.php');
 endif;
 ?>
+CREATE TABLE eve_event
+(
+    eve_oid INT PRIMARY KEY NOT NULL,
+    eve_title VARCHAR(250),
+    eve_date VARCHAR(250),
+    FOREIGN KEY(pla_place) REFERENCES pla_place(pla_oid)
+)
