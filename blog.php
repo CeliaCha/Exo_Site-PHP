@@ -28,6 +28,7 @@
         <?php
         $articleID = $_GET['id'];
         $article = custom_request("SELECT * FROM Blog WHERE _id = '$articleID'");
+        var_dump($article);
         while ($data = mysqli_fetch_array($article)) {
           echo "<h2 class='card-title'>" . $data['_titre'] . '</h2>';
           echo "<p class='card-subtitle'>" . $data['_date'] . '</p>';

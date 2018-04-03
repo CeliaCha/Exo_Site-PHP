@@ -1,14 +1,17 @@
 <?php
+
 include 'UTILS/database.php';
 if (isset($_POST['titrearticle'])) {
   foreach ($_POST as $key => $value) { $$key = $db->real_escape_string($value); }
   custom_request("INSERT INTO Events(_titre, _intro, _lieu, _image, _datedeb, _datefin, _datepub) VALUES('$titrearticle', '$intro', '$lieu', '$image', '$datedeb', '$datefin', '$datepub')");
 }
+
 if (isset($_POST['titreblog'])) {
   foreach ($_POST as $key => $value) { $$key = $db->real_escape_string($value); }
   custom_request("INSERT INTO Blog(_titre, _image, _intro, _texte, _date) VALUES('$titreblog', '$image', '$intro', '$texte', '$date')");
 }
 ?>
+
 <h1>Administration du site</h1>
 <form action="index.php?page=admin.php" method="post">
   <div class="form-group">
