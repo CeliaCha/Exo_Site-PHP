@@ -1,13 +1,21 @@
-function getPage(page) {
-    var url = 'http://php/main.php';
-    var xhr = new XMLHttpRequest;
-    xhr.responseType = 'text';
 
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState === XMLHttpRequest.DONE) {
-            console.log(xhr.response)
-        }
-    }
-    xhr.open('GET', './php/main.php?req=' + input)
-    xhr.send();
+// AJAX $.GET EXAMPLE
+
+// var idarticle = 12;
+// var boutonajax = document.getElementById('test-ajax');
+// boutonajax.addEventListener('click', getArticlePrice, nomarticle);
+
+function displayArticlePrice(nomarticle) {
+    const url = '../handle_ajax.php?action=getprix&nomarticle=' + nomarticle ;
+    $.get(url,
+        response => {
+            $('#display-prix').text(response + ',00 €');
+        }, 'text'
+    );
 }
+
+var selectarticle = $('#select-article');
+selectarticle.change(function(){
+    //$('#display-prix').text($(this).val());
+    (displayArticlePrice($(this).val()));
+})

@@ -1,4 +1,8 @@
 <?php
+include 'database.php';
+
+$dbCommerce = new DataBase('127.0.0.1', 'root', 'rajvena', 'E_COMMERCE');
+$dbCommerce->connect();
 
 // AJOUTER
 function addArticle($nomarticle, $prixarticle, $idvendeur) {
@@ -47,6 +51,11 @@ function getClientID($nomclient) {
 function getArticleID($nomarticle) {
     global $dbCommerce;
     return $dbCommerce->readOne("SELECT art_id FROM articles WHERE art_nom = '$nomarticle'")["art_id"];
+}
+
+function getArticlePrix($nomarticle) {
+    global $dbCommerce;
+    return $dbCommerce->readOne("SELECT art_prix FROM articles WHERE art_nom = '$nomarticle'")["art_prix"];
 }
 
 function getLastCommande() {

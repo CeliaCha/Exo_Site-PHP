@@ -1,5 +1,6 @@
 <?php
 include 'UTILS/elements.php';
+include 'UTILS/requests.php';
 //La Database est initialisée dans index.php
 
 // Affichage page initiale :
@@ -7,11 +8,23 @@ echo "<h2>Ajout références</h2>";
 echo $formulaire_add_article;
 echo $formulaire_add_client;
 echo $formulaire_add_vendeur;
+echo $bouton_test_ajax;
 echo "<hr/></br>";
 echo "<h2>Ajout commandes</h2>";
 echo $formulaire_add_commande_debut;
 displayOptionClients();
 echo $formulaire_add_commande_fin;
+
+// AJAX requests
+if (isset($_GET['action'])) {
+  $nomarticle = $_GET['reqarticleprice'];
+  $response = getArticlePrix($nomarticle);
+  echo $response;
+
+  // addCommandeArticle($_POST['nom-article'], $_POST['quantite-article']);
+  // var_dump(getLastCommande());
+  // $_SESSION['id-newcommande'] = getLastCommande();
+}
 
 // Exécution de l'app :
 if (!empty($_POST)) {
@@ -31,7 +44,7 @@ if (!empty($_POST)) {
   else if (!empty($_POST['add-commande'])) {
 
     addCommande($_POST['date-commande'], getClientID($_POST['nom-client']));
-    var_dump(getLastCommande());
+    //var_dump(getLastCommande());
     $_SESSION['id-newcommande'] = getLastCommande();
 
     // affiche formulaire choix article
@@ -43,8 +56,8 @@ if (!empty($_POST)) {
   }
 
   else if (!empty($_POST['add-commandearticle'])) {
-    addCommandeArticle($_POST['nom-article'], $_POST['quantite-article']);
-    var_dump(getLastCommande());
+    addCommandeArticle($_POST['select-article'], $_POST['quantite-article']);
+    // var_dump(getLastCommande());
     $_SESSION['id-newcommande'] = getLastCommande();
   }
 }
